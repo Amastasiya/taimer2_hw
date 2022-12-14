@@ -13,3 +13,26 @@
 #
 # 3. В какой день недели Вы родились? Перечислить все свои ДР,
 # пришедшиеся на тот же день недели.
+import time
+from datetime import datetime
+
+today = datetime(2022, 12, 13)
+
+def user():
+    year = int(input("Введите год рождения: "))
+    month = int(input("Введите месяц рождения: "))
+    day = int(input("Введите день рождения: "))
+    return year, month, day
+
+user_y, user_m, user_d = user()
+
+def year(user_y):
+    if (user_y % 4 == 0 and user_y % 100 != 0) or user_y % 400 == 0:
+        return True
+    else:
+        return False
+# проверка месяца
+def month(user_m):
+    if user_m <= 12 and user_m > 0:
+        return True
+    return False
