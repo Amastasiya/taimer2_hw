@@ -31,8 +31,20 @@ def year(user_y):
         return True
     else:
         return False
+
 # проверка месяца
 def month(user_m):
     if user_m <= 12 and user_m > 0:
         return True
     return False
+# проверка дней в месяце
+def in_month_of_days(m, y):
+    if m == 2:
+        if year(y):
+            return 29
+        return 28
+    elif m in [4, 6, 9, 11]:
+        return 30
+    else:
+        return 31
+
