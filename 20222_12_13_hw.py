@@ -18,13 +18,17 @@ from datetime import datetime
 from datetime import date
 
 today = datetime(2022, 12, 13)
-
-def user():
-    year = int(input("Введите год: "))
-    month = int(input("Введите месяц: "))
-    day = int(input("Введите день: "))
+def data():
+    day, month, year = map(int, input("Введите дату в формате ДД ММ ГГГГ: ").split())
     return year, month, day
-user_y, user_m, user_d = user()
+user_y, user_m, user_d = data()
+
+#def user():
+    #year = int(input("Введите год: "))
+    #month = int(input("Введите месяц: "))
+    #day = int(input("Введите день: "))
+    #return year, month, day
+#user_y, user_m, user_d = user()
 
 def year(user_y):
     if (user_y % 4 == 0 and user_y % 100 != 0) or user_y % 400 == 0:
@@ -58,4 +62,27 @@ def week(y, m, d):
     wd = ["понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресенье"]
     print(wd[day])
 week(user_y, user_m, user_d)
+
+# определение дня недели без datetime
+def week_day(y, m, d):
+    if (m == 1 or m == 2):
+        y -=1
+    m -= 2
+    if m <= 0:
+        m += 12
+    c = y // 100
+    y = y - c * 100
+    wk = (d + ((13 * m - 1) // 5) + y + (y // 4 + c // 4 - 2 * c + 777)) % 7
+    number_week = {1: "Понедельник",
+                   2: "Вторник",
+                   3: "Среда",
+                   4: "Четверг",
+                   5: "Пятница",
+                   6: "Суббота",
+                   7: "Воскресенье"}
+    result = number_week.get(wk)
+    return result
+print(week_day(user_y, user_m, user_d))
+
+
 
