@@ -20,9 +20,9 @@ from datetime import date
 today = datetime(2022, 12, 13)
 
 def user():
-    year = int(input("Введите год рождения: "))
-    month = int(input("Введите месяц рождения: "))
-    day = int(input("Введите день рождения: "))
+    year = int(input("Введите год: "))
+    month = int(input("Введите месяц: "))
+    day = int(input("Введите день: "))
     return year, month, day
 user_y, user_m, user_d = user()
 
@@ -52,10 +52,10 @@ def in_month_of_days(m, y):
         return 31
 print(in_month_of_days(user_m, user_y))
 
-#def week(y, m, d):
-    #day = y, m, d
-    #week_day = date.weekday(day)
-    #wd = ["понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресенье"]
-    #print(wd[week_day])
-#week(user_y, user_m, user_d)
+# определили по дате какой это был день недели
+def week(y, m, d):
+    day = datetime(y, m, d).weekday()
+    wd = ["понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресенье"]
+    print(wd[day])
+week(user_y, user_m, user_d)
 
