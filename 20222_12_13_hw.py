@@ -15,6 +15,7 @@
 # пришедшиеся на тот же день недели.
 import time
 from datetime import datetime
+from datetime import date
 
 today = datetime(2022, 12, 13)
 
@@ -23,7 +24,6 @@ def user():
     month = int(input("Введите месяц рождения: "))
     day = int(input("Введите день рождения: "))
     return year, month, day
-
 user_y, user_m, user_d = user()
 
 def year(user_y):
@@ -31,12 +31,15 @@ def year(user_y):
         return True
     else:
         return False
+print(year(user_y))
 
 # проверка месяца
 def month(user_m):
     if user_m <= 12 and user_m > 0:
         return True
     return False
+print(month(user_m))
+
 # проверка дней в месяце
 def in_month_of_days(m, y):
     if m == 2:
@@ -47,4 +50,12 @@ def in_month_of_days(m, y):
         return 30
     else:
         return 31
+print(in_month_of_days(user_m, user_y))
+
+#def week(y, m, d):
+    #day = y, m, d
+    #week_day = date.weekday(day)
+    #wd = ["понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресенье"]
+    #print(wd[week_day])
+#week(user_y, user_m, user_d)
 
