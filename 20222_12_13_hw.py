@@ -17,6 +17,9 @@ import time
 from datetime import datetime
 from datetime import date
 
+today = datetime.now()
+print("Сегодня", today)
+
 #today = datetime(2022, 12, 13)
 def data():
     day, month, year = map(int, input("Введите дату в формате ДД ММ ГГГГ: ").split())
@@ -84,6 +87,29 @@ def week_day(y, m, d):
     result = number_week.get(wk)
     return result
 print(week_day(user_y, user_m, user_d))
+
+def search_happy_new_year(today):
+    user = int(input("Напишите любой год: "))
+    today_year = today.year
+    for y in range(user, today_year):
+        if date(y, 1, 1).weekday() == 0: #or date(y, 1, 1).weekday() == 1:
+            print(y, "- в понедельник")
+        if date(y, 1, 1).weekday() == 1:
+            print(y, "- во вторник")
+
+print(search_happy_new_year(today))
+
+def happy_birthday(today):
+    user = int(input("Напишите год рождения: "))
+    today_year = today.year
+    print("В эти года день рождение был в понедельник")
+    for y in range(user, today_year):
+        if date(y, 10, 29).weekday() == 0:
+            print(y)
+
+(happy_birthday(today))
+
+
 
 
 
